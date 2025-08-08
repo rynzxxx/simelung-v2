@@ -50,11 +50,21 @@ class AuthController extends BaseController
             ];
             $this->session->set($sessionData);
 
-            // Redirect berdasarkan role
-            if ($user['role'] == 'superadmin') {
-                return redirect()->to('/superadmin/dashboard');
-            } else {
-                return redirect()->to('/admin/dashboard');
+            switch ($user['role']) {
+                case 'desa':
+                    return redirect()->to('/desa/dashboard');
+                case 'bumdes':
+                    return redirect()->to('/bumdes/dashboard');
+                case 'keuangan':
+                    return redirect()->to('/keuangan/dashboard');
+                case 'umkm':
+                    return redirect()->to('/umkm/dashboard');
+                case 'broker':
+                    return redirect()->to('/broker/dashboard');
+                case 'pariwisata':
+                    return redirect()->to('/pariwisata/dashboard');
+                default:
+                    return redirect()->to('/login');
             }
         } else {
             // Jika login gagal

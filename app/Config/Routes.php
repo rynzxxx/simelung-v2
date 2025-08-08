@@ -15,24 +15,11 @@ $routes->get('/login', 'AuthController::login');
 $routes->post('/login/process', 'AuthController::processLogin');
 $routes->get('/logout', 'AuthController::logout');
 
-// Grup rute untuk Super Admin (nanti akan kita proteksi)
-//$routes->group('superadmin', function ($routes) {
-//    $routes->get('dashboard', 'SuperAdminController::dashboard');
-//});
-
-// Grup rute untuk Admin (nanti akan kita proteksi)
-//$routes->group('admin', function ($routes) {
-//    $routes->get('dashboard', 'AdminController::dashboard');
-//});
-
-// ...
-
-// Grup rute untuk Super Admin
-$routes->group('superadmin', ['filter' => 'auth'], function ($routes) {
-    $routes->get('dashboard', 'SuperAdminController::dashboard');
-});
-
-// Grup rute untuk Admin
-$routes->group('admin', ['filter' => 'auth'], function ($routes) {
-    $routes->get('dashboard', 'AdminController::dashboard');
+$routes->group('', ['filter' => 'auth'], function ($routes) {
+    $routes->get('desa/dashboard', 'DashboardController::desa');
+    $routes->get('bumdes/dashboard', 'DashboardController::bumdes');
+    $routes->get('keuangan/dashboard', 'DashboardController::keuangan');
+    $routes->get('umkm/dashboard', 'DashboardController::umkm');
+    $routes->get('broker/dashboard', 'DashboardController::broker');
+    $routes->get('pariwisata/dashboard', 'DashboardController::pariwisata');
 });

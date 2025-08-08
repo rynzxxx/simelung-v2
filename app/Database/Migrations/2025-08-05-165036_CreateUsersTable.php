@@ -26,8 +26,8 @@ class CreateUsersTable extends Migration
             ],
             'role' => [
                 'type' => 'ENUM',
-                'constraint' => ['superadmin', 'admin'],
-                'default' => 'admin',
+                'constraint' => ['desa', 'bumdes', 'keuangan', 'umkm', 'broker', 'pariwisata'],
+                'default' => 'desa',
             ],
             'created_at' => [
                 'type' => 'DATETIME',
